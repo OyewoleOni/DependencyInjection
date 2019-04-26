@@ -26,6 +26,7 @@ Keyboard = 0,
                         if ( string.IsNullOrEmpty(paymentMethod) || paymentMethod.Split(";").Length != 2 )
                             throw new Exception("Invalid Payment Method");
                             orderManager.Submit(productEnum, paymentMethod.Split(";")[0], paymentMethod.Split(";")[1]);
+                        Console.WriteLine($"{productEnum.ToString()} has been shipped");
                     }
                     else
                     {

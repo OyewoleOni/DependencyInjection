@@ -4,7 +4,13 @@ using System.Text;
 
 namespace DependencyInjection
 {
-   public class ProductStockRepository
+    public interface IProductStockRepository
+    {
+        bool IsInStock(Product product);
+        void ReduceStock(Product product);
+        void AddStock(Product product);
+    }
+    public class ProductStockRepository :IProductStockRepository
     {
         private static Dictionary<Product, int> _productStockDatabase = Setup();
 
@@ -26,7 +32,7 @@ namespace DependencyInjection
         public void ReduceStock(Product product)
         {
             Console.WriteLine("Call upadte on Database");
-            _productStockDatabase [product] --;
+            _productStockDatabase [product]--;
         }
 
         public void AddStock(Product product)
